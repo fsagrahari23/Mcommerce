@@ -10,7 +10,7 @@ const initialState = {
 };
 
 export const registerUser = createAsyncThunk('/auth/register',async(formdata)=>{
-  const response = await axios.post('/api/auth/register',formdata,{
+  const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`,formdata,{
     withCredentials:true
   })
   return response.data;
