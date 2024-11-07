@@ -68,14 +68,15 @@ export const ShoppingHome = () => {
 
   return (
     <div className="flex flex-col min-h-screen ">
-      <div className="relative w-full h-[600px] overflow-hidden rounded-lg">
+      <div className="relative w-full sm:h-[600px] h-[200px] overflow-hidden rounded-lg">
         {slides.map((slide, index) => (
           <img
             src={slide}
             key={index}
             className={`${
               index === currentSlide ? "opacity-100" : "opacity-0"
-            } absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000`}
+            } absolute top-0 left-0 sm:w-full sm:h-full  sm:object-cover 
+             object-center transition-opacity duration-1000 w-90`}
           />
         ))}
         <Button

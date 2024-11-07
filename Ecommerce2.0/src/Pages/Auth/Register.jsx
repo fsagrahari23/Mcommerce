@@ -29,7 +29,7 @@ const Authregister = () => {
         navigate("/auth/login");
       } else {
         toast({
-          title: data?.payload?.message,
+          title: "Some error occured during registration",
           description: data?.payload?.message,
           variant: "destructive",
         });
