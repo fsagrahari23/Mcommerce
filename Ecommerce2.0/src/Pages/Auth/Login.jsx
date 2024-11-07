@@ -38,7 +38,7 @@ const AuthLogin = () => {
     <div className="mx-auto w-full max-w-md space-y-6">
       <div className="text-center">
         <h1 className="text-3xl tracking-tighter text-foreground font-bold">
-          Create New Account
+          Log in to yours account
         </h1>
         <p className="mt-2">
           Dont have an account ?
