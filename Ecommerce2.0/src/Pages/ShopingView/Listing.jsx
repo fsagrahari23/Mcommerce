@@ -17,7 +17,7 @@ import {
   fetchDetailedProducts,
 } from "@/store/product-slice";
 import ProductTile from "@/components/shopingView/ProductTile";
-import { createSearchParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
 import { addToCart, fetchCart } from "@/store/cart-slice";
 import { toast } from "@/hooks/use-toast";
