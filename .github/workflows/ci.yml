@@ -67,7 +67,7 @@ jobs:
           echo "Known hosts file now:"
           cat ~/.ssh/known_hosts
         env:
-          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_HOST: '13.48.104.73'
 
       - name: Write SSH key
         run: |
