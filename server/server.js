@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const PORT = process.env.PORT || 5000;
 // create a database connection 
 
-mongoose.connect(`mongodb+srv://monuagrhari854:${process.env.MONGO_PASS}@cluster0.oafsa.mongodb.net/ecommerce2-0`).then(() => {
+mongoose.connect(`mongodb+srv://monu:${process.env.MONGO_PASS}@cluster0.bgnsdfg.mongodb.net/`).then(() => {
   console.log('Database connected successfully');
 }).catch((err) => {
   console.log(err);

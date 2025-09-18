@@ -1,0 +1,25 @@
+services:
+  backend:
+    build: ./server
+    container_name: backend
+    restart: always
+    env_file:
+      - ./server/.env
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: 
+      context: ./Ecommerce2.0
+      args:
+        VITE_API_URL: http://localhost:5000
+    container_name: frontend
+    restart: always
+    env_file:
+      - ./Ecommerce2.0/.env
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+    

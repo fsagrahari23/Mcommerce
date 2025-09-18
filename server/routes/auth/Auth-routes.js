@@ -7,6 +7,7 @@ const {loginUser} = require("../../controllers/auth/auth-controller")
 router.post("/register",registerUser);
 router.post("/login", loginUser);
 router.get("/logout",authMiddleware,logoutUser);
+
 router.get('/check-auth', authMiddleware, (req,res)=>{
   user=req.user;
   res.status(200).json({
