@@ -31,7 +31,7 @@ const adminOrderSlice = createSlice({
   name: "adminOrder",
   initialState,
   reducers: {
-    resetOrderDetails:(state,action)=>{state.orderDetails = null}
+    resetOrderDetails:(state)=>{state.orderDetails = null}
   },
   extraReducers: (builder) => {
     builder
@@ -50,7 +50,7 @@ const adminOrderSlice = createSlice({
         console.log(action.payload);
         state.isLoading = false;
         state.orderDetails = action.payload.data;
-      }).addCase(getOrderDetails.rejected, (state, action) => {
+      }).addCase(getOrderDetails.rejected, (state) => {
         state.isLoading = false;
         state.orderDetails = null;
       })

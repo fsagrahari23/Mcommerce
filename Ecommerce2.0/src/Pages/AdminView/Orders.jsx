@@ -23,7 +23,7 @@ import {
 const AdminOrders = () => {
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  
   const { orderList, orderDetails } = useSelector((state) => state.order);
 
   function handleFetchOrderDetails(getId) {

@@ -27,7 +27,7 @@ const searchSlice = createSlice({
 
       state.isLoading = false;
       state.searchValue = action.payload.data;
-    }).addCase( searchProducts.rejected, (state, action) => {
+    }).addCase( searchProducts.rejected, (state) => {
       state.isLoading = false;
       state.searchValue = [];
     })

@@ -45,44 +45,44 @@ const cartSlice = createSlice({
   reducers: {},
   extraReducers:(builder)=>{
 
-    builder.addCase(addToCart.pending,(state,action)=>{
+    builder.addCase(addToCart.pending,(state)=>{
       state.isLoading = true
     }).addCase(addToCart.fulfilled,(state,action)=>{
  
       state.isLoading = false
       state.cartItems = action.payload.data
 
-    }).addCase(addToCart.rejected,(state,action)=>{
+    }).addCase(addToCart.rejected,(state)=>{
       state.isLoading = false
       state.cartItems = []
-    }).addCase(fetchCart.pending,(state,action)=>{
+    }).addCase(fetchCart.pending,(state)=>{
       state.isLoading = true
     }).addCase(fetchCart.fulfilled,(state,action)=>{
      
       state.isLoading = false
       state.cartItems = action.payload.data
 
-    }).addCase(fetchCart.rejected,(state,action)=>{
+    }).addCase(fetchCart.rejected,(state)=>{
       state.isLoading = false
       state.cartItems = []
-    }).addCase(deleteCart.pending,(state,action)=>{
+    }).addCase(deleteCart.pending,(state)=>{
       state.isLoading = true
     }).addCase(deleteCart.fulfilled,(state,action)=>{
    
       state.isLoading = false
       state.cartItems = action.payload.data
 
-    }).addCase(deleteCart.rejected,(state,action)=>{
+    }).addCase(deleteCart.rejected,(state)=>{
       state.isLoading = false
       state.cartItems = []
-    }).addCase(updateCartItem.pending,(state,action)=>{
+    }).addCase(updateCartItem.pending,(state)=>{
       state.isLoading = true
     }).addCase(updateCartItem.fulfilled,(state,action)=>{
    
       state.isLoading = false
       state.cartItems = action.payload.data
 
-    }).addCase(updateCartItem.rejected,(state,action)=>{
+    }).addCase(updateCartItem.rejected,(state)=>{
       state.isLoading = false
       state.cartItems = []
     })

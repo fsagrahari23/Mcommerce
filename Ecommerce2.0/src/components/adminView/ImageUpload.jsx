@@ -9,7 +9,6 @@ import { Skeleton } from "../ui/skeleton";
 const ProductUpload = ({
   imageFile,
   setImageFile,
-  upalodedImageUrl,
   setUploadedImageUrl,
   laoding,
   setLoading,

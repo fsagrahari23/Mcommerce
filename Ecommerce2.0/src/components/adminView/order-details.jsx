@@ -6,7 +6,6 @@ import { Separator } from "../ui/separator";
 import { Badge } from "lucide-react";
 import { useDispatch } from "react-redux";
 import {
-  getAllOrders,
   getOrderDetails,
   updateOrderDetails,
 } from "@/store/admin-order-slice";

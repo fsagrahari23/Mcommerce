@@ -40,7 +40,7 @@ const shopingOrderSlice= createSlice({
   name: "order",
   initialState,
   reducers: {
-    resetOrderDetails:(state,action)=>{
+    resetOrderDetails:(state)=>{
       state.orderDetails = null
     }
   },
@@ -54,7 +54,7 @@ const shopingOrderSlice= createSlice({
       state.order = action.payload.orderId;
       state.approvalURL = action.payload.data,
       sessionStorage.setItem("orderid", action.payload.orderId)
-    }).addCase(createOrder.rejected, (state, action) => {
+    }).addCase(createOrder.rejected, (state) => {
       state.isLoading = false;
       state.order = null;
       state.approvalURL = null
@@ -64,7 +64,7 @@ const shopingOrderSlice= createSlice({
       console.log(action.payload);
       state.isLoading = false;
       state.orderList = action.payload.data;
-    }).addCase(getAllOrders.rejected, (state, action) => {
+    }).addCase(getAllOrders.rejected, (state) => {
       state.isLoading = false;
       state.orderList = [];
     }).addCase(getOrderDetails.pending, (state) => {
@@ -73,16 +73,16 @@ const shopingOrderSlice= createSlice({
       console.log(action.payload);
       state.isLoading = false;
       state.orderDetails = action.payload.data;
-    }).addCase(getOrderDetails.rejected, (state, action) => {
+    }).addCase(getOrderDetails.rejected, (state) => {
       state.isLoading = false;
       state.orderDetails = null;
     }).addCase(captureOrder.pending, (state) => {
       state.isLoading = true;
-    }).addCase(captureOrder.fulfilled, (state, action) => {
+    }).addCase(captureOrder.fulfilled, (state) => {
       state.isLoading = false;
       state.order = null;
       state.approvalURL = null
-    }).addCase(captureOrder.rejected, (state, action) => {
+    }).addCase(captureOrder.rejected, (state) => {
       state.isLoading = false;
       state.order = null;
       state.approvalURL = null

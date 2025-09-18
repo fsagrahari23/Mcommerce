@@ -13,7 +13,7 @@ const Checkout = () => {
 
   const { cartItems } = useSelector((state) => state.shopCart);
 
-  const { addresses } = useSelector((state) => state.userAddress);
+
 
   // console.log(cartItems);
   const cart = cartItems?.items;
@@ -31,7 +31,7 @@ const Checkout = () => {
     : 0;
   useEffect(() => {
     dispatch(fetchCart({ userId: user.id }));
-  }, [dispatch]);
+  }, [dispatch, user.id]);
 
   const [currentSelectedAddress, setSelectedAddress] = useState(null);
 

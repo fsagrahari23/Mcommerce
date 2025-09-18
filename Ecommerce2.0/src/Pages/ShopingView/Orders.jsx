@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const ShoppingOrders = () => {
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
-  const [orderDetail, setOrderDetails] = useState(null);
+
   const dispatch = useDispatch();
   const { orderList, orderDetails } = useSelector((state) => state.order);
   const { user } = useSelector((state) => state.auth);
@@ -31,7 +31,7 @@ const ShoppingOrders = () => {
   }
   useEffect(() => {
     dispatch(getAllOrders({ userId: user?.id }));
-  }, [dispatch]);
+  }, [dispatch, user?.id]);
 
   return (
     <Card>

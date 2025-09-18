@@ -29,7 +29,7 @@ const adminSideBarMEnuItems = [
     icons: <BadgeCheck />,
   },
 ];
-function MenuItems({ open, setOpen }) {
+function MenuItems({ setOpen }) {
   const Navigate = useNavigate();
   return (
     <nav className="mt-8 flex-col flex gap-2">

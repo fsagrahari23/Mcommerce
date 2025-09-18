@@ -17,7 +17,7 @@ export function CheckAuth({ isAuthenticated, user, children }) {
     (location.pathname.includes("/auth/login") ||
       location.pathname.includes("/auth/register"))
   ) {
-    // eslint-disable-next-line react/prop-types
+
     if (user?.role === "admin") {
       return <Navigate to="/admin/dashboard" />;
     } else {

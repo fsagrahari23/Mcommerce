@@ -49,8 +49,7 @@ const authSlice = createSlice({
   name:'auth',
   initialState,
   reducers:{
-    setUser:(state,action)=>{
-    }
+  
   },
   extraReducers:(builder)=>{
     builder.addCase(registerUser.pending,(state)=>{
@@ -70,7 +69,7 @@ const authSlice = createSlice({
     state.isLoading=false
     state.user=!action.payload.success?null:action.payload.user
     state.isAuthenticated= action.payload.success
-}).addCase(loginUser.rejected,(state,action)=>{
+}).addCase(loginUser.rejected,(state)=>{
   state.isLoading=false
   state.user=null
   state.isAuthenticated=false
@@ -80,11 +79,11 @@ const authSlice = createSlice({
   state.isLoading=false
   state.user=!action.payload.success?null:action.payload.user
   state.isAuthenticated= action.payload.success
-}).addCase(checkAuth.rejected,(state,action)=>{
+}).addCase(checkAuth.rejected,(state)=>{
 state.isLoading=false
 state.user=null
 state.isAuthenticated=false
-}).addCase(logOutUser.fulfilled,(state,action)=>{
+}).addCase(logOutUser.fulfilled,(state)=>{
   state.isLoading=false
   state.user=null;
   state.isAuthenticated= false

@@ -1,7 +1,7 @@
 import { Minus, Plus, Trash } from "lucide-react";
 import React from "react";
 import { Button } from "../ui/button";
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "@/hooks/use-toast";
 import { deleteCart, fetchCart, updateCartItem } from "@/store/cart-slice";
@@ -25,7 +25,7 @@ const CartContent = ({ item }) => {
       }
     );
   };
-  const { cartItems } = useSelector((state) => state.shopCart);
+ 
   const handleUpdateQuantity = (item, action) => {
     const mainItem = productsList.find(
       (product) => product._id === item.productId

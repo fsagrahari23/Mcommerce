@@ -33,7 +33,7 @@ function ShoppingOrders() {
   useEffect(() => {
     
     dispatch(getAllOrders({ userId: user?.id }));
-  }, [dispatch]);
+  }, [dispatch, user?.id]);
 
   useEffect(() => {
     if (orderDetails !== null) setOpenDetailsDialog(true);

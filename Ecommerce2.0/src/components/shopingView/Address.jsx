@@ -70,7 +70,7 @@ const Address = ({ setSelectedAddress }) => {
   };
   useEffect(() => {
     dispatch(fetchAddress({ userId: user.id }));
-  }, [dispatch]);
+  }, [dispatch, user.id]);
 
   const handleDelete = (address) => {
     setFormData(initialAddress);

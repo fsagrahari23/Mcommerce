@@ -1,8 +1,7 @@
-import { useDispatch } from "react-redux";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import { Label } from "../ui/label";
-import { deleteAddress, fetchAddress } from "@/store/address-slice";
+
 import { toast } from "@/hooks/use-toast";
 
 function AddressCard({

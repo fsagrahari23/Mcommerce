@@ -15,9 +15,9 @@ import {
   fetchAllProducts,
   addNewProduct,
   editProducts,
-  deleteProducts,
+
 } from "@/store/admin-slice";
-import { Toast } from "@/components/ui/toast";
+
 import { useToast } from "@/hooks/use-toast";
 import AdminProductsView from "./ProductsView";
 
@@ -43,6 +43,8 @@ const AdminProducts = () => {
   const { products } = useSelector((state) => state.adminProducts);
   const [currentEditedId, setCurrentEditedId] = React.useState(null);
   const [currentDeleteId, setCurrentDeleteId] = React.useState(null);
+
+  console.log(currentDeleteId)
 
   const { toast } = useToast();
   // console.log(products);

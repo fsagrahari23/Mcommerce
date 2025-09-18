@@ -33,6 +33,7 @@ function MenuItems() {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams);
   const handleNavigate = (categoryItem) => {
     sessionStorage.removeItem("filters");
 
@@ -77,7 +78,7 @@ function HeaderRightContain() {
   // const cart = cartItems.items;
   useEffect(() => {
     dispatch(fetchCart({ userId: user.id }));
-  }, [dispatch]);
+  }, [dispatch, user.id]);
 
   return (
     <div className="flex lg:items-center lg:flex-row flex-col gap-4">
@@ -128,7 +129,7 @@ function HeaderRightContain() {
   );
 }
 const ShoppingHeader = () => {
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  // const { isAuthenticated, user } = useSelector((state) => state.auth);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">

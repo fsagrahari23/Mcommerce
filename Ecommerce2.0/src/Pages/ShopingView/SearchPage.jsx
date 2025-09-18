@@ -19,7 +19,7 @@ function SearchProducts() {
   const { productDetail } = useSelector((state) => state.shopProducts);
 
   const { user } = useSelector((state) => state.auth);
-
+  console.log(searchParams);
   const { cartItems } = useSelector((state) => state.shopCart);
   const { toast } = useToast();
   useEffect(() => {
@@ -32,7 +32,7 @@ function SearchProducts() {
       setSearchParams(new URLSearchParams(`?keyword=${keyword}`));
       dispatch(searchProducts());
     }
-  }, [keyword]);
+  }, [dispatch, keyword, setSearchParams]);
 
   const handleAddtoCart = (getCurrentProductId, getTotalStock) => {
     console.log(cartItems);
