@@ -54,12 +54,12 @@ jobs:
       - name: Debug env + prepare known_hosts
         run: |
           set -x                                   # echo commands
-          echo "EC2_HOST: $EC2_HOST"               # show host
+          echo "EC2_HOST: 13.48.104.73"               # show host
           mkdir -p ~/.ssh
           touch ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
           # verbose keyscan to see what happens
-          ssh-keyscan -v -H "$EC2_HOST" >> ~/.ssh/known_hosts 2>&1 || {
+          ssh-keyscan -v -H 13.48.104.73 >> ~/.ssh/known_hosts 2>&1 || {
             echo "ssh-keyscan failed!" >&2
             cat ~/.ssh/known_hosts
             exit 1
@@ -67,7 +67,7 @@ jobs:
           echo "Known hosts file now:"
           cat ~/.ssh/known_hosts
         env:
-          EC2_HOST: '13.48.104.73'
+          EC2_HOST: 13.48.104.73
 
       - name: Write SSH key
         run: |
