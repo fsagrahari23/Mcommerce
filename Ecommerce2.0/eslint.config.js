@@ -21,6 +21,9 @@ export default [
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
     },
+     linterOptions: {
+      maxWarnings: 5,
+    },
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
