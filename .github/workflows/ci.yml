@@ -1,14 +1,12 @@
 name: build-and-lint
 
 # triggers: define when this workflow should run
-# trigger on push to these branches
 on:
   push:
     branches: [main, dev]
   pull_request:
     branches: [main, dev]
 
-    # define a job (multiple jobs also)
 jobs:
   build-and-lint:
     runs-on: ubuntu-latest
@@ -48,23 +46,35 @@ jobs:
     needs: build-and-lint
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout (optional)
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Add EC2 host to known_hosts
+      - name: Debug env + prepare known_hosts
         run: |
+          set -x                                   # echo commands
+          echo "EC2_HOST: $EC2_HOST"               # show host
           mkdir -p ~/.ssh
           touch ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
-          ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts
+          # verbose keyscan to see what happens
+          ssh-keyscan -v -H "$EC2_HOST" >> ~/.ssh/known_hosts 2>&1 || {
+            echo "ssh-keyscan failed!" >&2
+            cat ~/.ssh/known_hosts
+            exit 1
+          }
+          echo "Known hosts file now:"
+          cat ~/.ssh/known_hosts
         env:
           EC2_HOST: ${{ secrets.EC2_HOST }}
 
       - name: Write SSH key
         run: |
+          set -x
           echo "${EC2_KEY}" > ec2_key.pem
           chmod 600 ec2_key.pem
+          ls -l ec2_key.pem
         env:
           EC2_KEY: ${{ secrets.EC2_KEY }}
 
@@ -74,8 +84,11 @@ jobs:
           EC2_USER: ${{ secrets.EC2_USER }}
           EC2_APP_DIR: ${{ secrets.EC2_APP_DIR }}
         run: |
-          ssh -i ec2_key.pem ${EC2_USER}@${EC2_HOST} << EOF
-            set -e
+          set -x   # trace commands in CI
+          echo "Connecting to $EC2_USER@$EC2_HOST"
+          ssh -vvv -i ec2_key.pem ${EC2_USER}@${EC2_HOST} << 'EOF'
+            set -ex  # trace + exit on error inside EC2
+            echo "Inside EC2, at $(pwd)"
             cd "${EC2_APP_DIR}"
 
             git fetch --all
