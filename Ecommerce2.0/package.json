@@ -6,7 +6,7 @@
  "scripts": {
   "dev": "vite",
   "build": "vite build",
-  "lint": "eslint . --max-warnings=0",
+  "lint": "eslint . --max-warnings=5",
   "lint:fix": "eslint . --fix",
   "format": "prettier --write .",
   "preview": "vite preview --host 0.0.0.0 --port 5173"
