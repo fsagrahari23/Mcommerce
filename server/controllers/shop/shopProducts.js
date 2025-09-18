@@ -69,4 +69,4 @@ const getProductDetails = async (req,res) => {
 }
 };
 
-module.exports = { getFilteredProducts ,getProductDetails}
+module.exports = { getFilteredProducts ,getProductDetails};
