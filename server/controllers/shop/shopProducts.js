@@ -5,10 +5,10 @@ const getFilteredProducts = async (req,res) => {
     const {category = [],brand = [],sortBy="Price: High to Low"} = req.query;
     let filters = {};
     if(category.length > 0){
-      filters.category = {$in: category.split(",")}
+      filters.category = {$in: category.split(",")};
     }
     if(brand.length > 0){
-      filters.brand = {$in: brand.split(",")}
+      filters.brand = {$in: brand.split(",")};
     }
     let sort = {};
     switch(sortBy){
@@ -34,39 +34,39 @@ const getFilteredProducts = async (req,res) => {
     res.status(200).json({
       success:true,
       data:products
-    })
+    });
 
   }catch(err){
     console.log(err);
      return res.status(500).json({
       success:false,
       message:"Some Error occured",
-     })
+     });
     
   }
-}
+};
 
 const getProductDetails = async (req,res) => {
   const {productId} = req.params;
-  console.log(productId)
+  console.log(productId);
   try{
   
   const product = await Product.findById(productId);
   if(!product) return res.json({
     success:false,
     message:"Product not found"
-  })
+  });
   res.status(200).json({
     success:true,
     data:product
-  })
+  });
 }catch(err){
   console.log(err);
   return res.status(500).json({
     success:false,
     message:"Some Error occured",
-  })
+  });
 }
-}
+};
 
 module.exports = { getFilteredProducts ,getProductDetails}

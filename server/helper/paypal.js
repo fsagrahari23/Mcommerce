@@ -1,5 +1,5 @@
-const dotenv = require('dotenv')
-dotenv.config()
+const dotenv = require('dotenv');
+dotenv.config();
 const paypal = require('paypal-rest-sdk');
 
 paypal.configure({
@@ -7,6 +7,6 @@ paypal.configure({
   client_id: process.env.PAYPAL_CLIENTID,
   client_secret:process.env.PAYPAL_SECRET,
   debug: true
-})
+});
 
-module.exports = {paypal}
+module.exports = {paypal};

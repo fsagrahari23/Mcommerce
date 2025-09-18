@@ -10,14 +10,14 @@ const addToCart = async (req, res) => {
       return res.status(400).json({
         success:false,
         message:"All fields are required"
-      })
+      });
     }
     const product = await Product.findById(productId);
     if(!product){
       return res.status(404).json({
         success:false,
         message:"Product not found"
-      })
+      });
     }
     const cart = await Cart.findOne({userId});
     if(!cart){
@@ -27,12 +27,12 @@ const addToCart = async (req, res) => {
           productId,
           quantity
         }]
-      })
+      });
       await newCart.save();
       return res.status(200).json({
         success:true,
         message:"Product added to cart"
-      })
+      });
     }else{
       const itemIndex = cart.items.findIndex((p)=>p.productId.toString() === productId.toString());
       if(itemIndex > -1){
@@ -41,14 +41,14 @@ const addToCart = async (req, res) => {
         return res.status(200).json({
           success:true,
           message:"Product updated in cart"
-        })
+        });
       }else{
         cart.items.push({productId,quantity});
         await cart.save();
         return res.status(200).json({
           success:true,
           message:"Product added to cart"
-        })
+        });
       }
     }
 
@@ -58,9 +58,9 @@ const addToCart = async (req, res) => {
       success:false,
       message:"Internal server error"
     
-    })
+    });
   }
-}
+};
 
 const fetchCartItem = async (req, res) => {
  
@@ -71,14 +71,14 @@ const fetchCartItem = async (req, res) => {
       res.json({
         success:false,
         message:"User not found"
-      })
+      });
     }
     const cart = await Cart.findOne({userId}).populate({path:"items.productId",select:"name salePrice image discountPrice"});
     if(!cart){
      return  res.json({
         success:false,
         message:"Cart not found"
-      })
+      });
     }
     // console.log(cart);
     const validItem = cart.items.filter((p)=>p.productId);
@@ -95,15 +95,15 @@ const fetchCartItem = async (req, res) => {
         image:item.productId.image,
         discountPrice:item.productId.discountPrice,
         quantity:item.quantity
-      }
-    })
+      };
+    });
     res.json({
       success:true,
       data :{
         ...cart._doc,
         items:populateCartItems
       }
-    })
+    });
 
    
 
@@ -113,9 +113,9 @@ const fetchCartItem = async (req, res) => {
       success:false,
       message:"Internal server error"
     
-    })
+    });
   }
-}
+};
 
 const updateCartItem = async (req, res) => {
   
@@ -133,7 +133,7 @@ const updateCartItem = async (req, res) => {
       return res.status(400).json({
         success:false,
         message:"All fields are required"
-      })
+      });
     }
     const cart = await Cart.findOne({userId});
     console.log(cart);
@@ -141,7 +141,7 @@ const updateCartItem = async (req, res) => {
       res.json({
         success:false,
         message:"Cart not found"
-      })
+      });
     }
     const itemIndex = cart.items.findIndex((p)=>p.productId.toString() === productId.toString());
     if(itemIndex > -1){
@@ -150,16 +150,16 @@ const updateCartItem = async (req, res) => {
       return res.status(200).json({
         success:true,
         message:"Product updated in cart"
-      })
+      });
     }else{
       return res.status(404).json({
         success:false,
         message:"Product not found in cart"
-      })
+      });
     }
 
 
-    await cart.populate({path:"items.productId",select:"name salePrice image discountPrice"})
+    await cart.populate({path:"items.productId",select:"name salePrice image discountPrice"});
 
     const populateCartItems = validItem.map(item =>{
       return {
@@ -169,15 +169,15 @@ const updateCartItem = async (req, res) => {
         image:item.productId?item.productId.image:null,
         discountPrice:item.productId?item.productId.discountPrice:null,
         quantity:item.productId?item.quantity:null
-      }
-    })
+      };
+    });
     res.json({
       success:true,
       data :{
         ...cart._doc,
         items:populateCartItems
       }
-    })
+    });
 
   }catch(err){
     console.log(err); 
@@ -185,9 +185,9 @@ const updateCartItem = async (req, res) => {
       success:false,
       message:"Internal server error"
     
-    })
+    });
   }
-}
+};
 const deleteCartItem = async (req, res) => {
   
   try{
@@ -196,7 +196,7 @@ const deleteCartItem = async (req, res) => {
         return res.status(400).json({
           success:false,
           message:"Invalid data provided"
-        })
+        });
       }
   const cart = await Cart.findOne({userId}).populate({
     path:"items.productId",select:"name salePrice image discountPrice"
@@ -206,7 +206,7 @@ const deleteCartItem = async (req, res) => {
   return res.satatus(400).json({
     success:false,
     message:"cart not found"
-  })
+  });
  }
  cart.items = cart.items.filter(item => item.productId._id.toString()!== productId);
  await cart.save();
@@ -222,15 +222,15 @@ const populateCartItems = cart.items.map(item =>{
     image:item.productId?item.productId.image:null,
     discountPrice:item.productId?item.productId.discountPrice:null,
     quantity:item.productId?item.quantity:null
-  }
-})
+  };
+});
 res.json({
   success:true,
   data :{
     ...cart._doc,
     items:populateCartItems
   }
-})
+});
 
   }catch(err){
     console.log(err); 
@@ -238,8 +238,8 @@ res.json({
       success:false,
       message:"Internal server error"
     
-    })
+    });
   }
-}
+};
 
-module.exports = { addToCart, updateCartItem, deleteCartItem ,fetchCartItem}
+module.exports = { addToCart, updateCartItem, deleteCartItem ,fetchCartItem};

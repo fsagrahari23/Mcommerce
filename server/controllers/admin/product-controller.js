@@ -49,7 +49,7 @@ const addProduct = async (req, res) => {
       message: "Error occurred",
     });
   }
-}
+};
 
 // fetch all product
 const fetchAllProducts = async (req, res) => {
@@ -66,7 +66,7 @@ const fetchAllProducts = async (req, res) => {
       message: "Error occurred",
     });
   }
-}
+};
 
 // edit a products
 const editProduct = async (req, res) => {
@@ -107,7 +107,7 @@ const editProduct = async (req, res) => {
       message: "Error occurred",
     });
   }
-}
+};
 
 // delete a products
 
@@ -133,6 +133,6 @@ const deleteProduct = async (req, res) => {
       message: "Error occurred",
     });
   }
-}
+};
 
 module.exports = { handleImageUpload ,addProduct,fetchAllProducts,editProduct,deleteProduct};

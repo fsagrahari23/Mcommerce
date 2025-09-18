@@ -21,7 +21,7 @@ const searchProducts = async (req, res) => {
         { brand: regX },
         
       ]
-    }
+    };
     
     const products = await Product.find(createSearchQuery);
     
@@ -39,6 +39,6 @@ const searchProducts = async (req, res) => {
     });
 
   }
-}
+};
 
-module.exports = { searchProducts }
+module.exports = { searchProducts };

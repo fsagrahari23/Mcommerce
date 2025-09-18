@@ -24,7 +24,7 @@ const getAllOrders = async (req, res) => {
       message: "Some error occurred",
     });
   }
-}
+};
 const getOrderDetails = async (req, res) => {
   console.log(req.params);
   try {
@@ -48,7 +48,7 @@ const getOrderDetails = async (req, res) => {
       message: "Some error occurred",
     });
   }
-}
+};
 
 const updateOrder=  async (req, res) => {
   console.log(req.params);
@@ -76,6 +76,6 @@ const updateOrder=  async (req, res) => {
       message: "Some error occurred",
     });
   }
-}
+};
 
 module.exports = {getAllOrders,getOrderDetails,updateOrder};

@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { getAllOrders , getOrderDetails,deleteOrder,updateOrder} = require("../../controllers/admin/order-controller");
+const { getAllOrders , getOrderDetails,updateOrder} = require("../../controllers/admin/order-controller");
 const router = express.Router();
 
 router.get("/list", getAllOrders);

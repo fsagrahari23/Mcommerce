@@ -18,13 +18,13 @@ const registerUser = async (req, res) => {
       username,
       email,
       password:hashPassword,
-    })
+    });
 
     res.status(201).json({
       success: true,
       newuser,
       message: "User created successfully",
-    })
+    });
   }catch(err){
     console.log(err);
     res.status(500).json({
@@ -33,7 +33,7 @@ const registerUser = async (req, res) => {
     });
   }
   
-}
+};
 
 // login
 const loginUser = async (req, res) => {
@@ -83,7 +83,7 @@ const loginUser = async (req, res) => {
     });
   }
   
-}
+};
 
 // logout
 const logoutUser = (req, res) => {
@@ -92,7 +92,7 @@ const logoutUser = (req, res) => {
     success: true,
     message: "Logout successful",
   });
-}
+};
 
 // auth-middleware
 const authMiddleware = (req, res, next) => {
@@ -115,6 +115,6 @@ try{
 }
   
   next();
-}
+};
 
 module.exports = {registerUser, loginUser, logoutUser, authMiddleware};

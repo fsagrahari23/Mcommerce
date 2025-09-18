@@ -125,7 +125,7 @@ const capturePayment = async (req, res) => {
       success: true,
       message: "Payment captured",
       data: order,
-    })
+    });
 
     
   }
@@ -136,7 +136,7 @@ const capturePayment = async (req, res) => {
       message: "Some error occurred",
     });
   }
-}
+};
 
 const getAllOrders = async (req, res) => {
   
@@ -162,7 +162,7 @@ const getAllOrders = async (req, res) => {
       message: "Some error occurred",
     });
   }
-}
+};
 const getOrderDetails = async (req, res) => {
   try {
     const {id} = req.params;
@@ -185,6 +185,6 @@ const getOrderDetails = async (req, res) => {
       message: "Some error occurred",
     });
   }
-}
+};
 
 module.exports = { createOrder , capturePayment ,getAllOrders,getOrderDetails};

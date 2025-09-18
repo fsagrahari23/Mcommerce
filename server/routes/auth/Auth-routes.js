@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const {registerUser,logoutUser,authMiddleware} = require("../../controllers/auth/auth-controller")
-const {loginUser} = require("../../controllers/auth/auth-controller")
+const {registerUser,logoutUser,authMiddleware} = require("../../controllers/auth/auth-controller");
+const {loginUser} = require("../../controllers/auth/auth-controller");
 
 
 router.post("/register",registerUser);
@@ -14,6 +14,6 @@ router.get('/check-auth', authMiddleware, (req,res)=>{
     success:true,
     message:"User authenticated",
     user
-  })
-})
-module.exports = router
+  });
+});
+module.exports = router;

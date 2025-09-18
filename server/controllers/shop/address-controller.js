@@ -1,4 +1,4 @@
-const Address = require('../../models/Adderess')
+const Address = require('../../models/Adderess');
 
 
 const addAddress = async (req, res) => {
@@ -20,7 +20,7 @@ const addAddress = async (req, res) => {
       zipcode,
       phone,
       notes
-    })
+    });
     await newAddress.save();
     res.status(200).json({
       success: true,
@@ -33,9 +33,9 @@ const addAddress = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Error occurred",  
-    })
+    });
   }
-}
+};
 const fetchAddress = async (req, res) => {
   
   try{
@@ -63,9 +63,9 @@ const fetchAddress = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Error occurred",  
-    })
+    });
   }
-}
+};
 const editAddress = async (req, res) => {
  
   try{
@@ -95,9 +95,9 @@ const editAddress = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Error occurred",  
-    })
+    });
   }
-}
+};
 const deleteAddress = async (req, res) => {
   try{
     const {userId,addId} = req.params;
@@ -126,8 +126,8 @@ const deleteAddress = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Error occurred",  
-    })
+    });
   }
-}
+};
 
-module.exports = {addAddress,fetchAddress,editAddress,deleteAddress}
+module.exports = {addAddress,fetchAddress,editAddress,deleteAddress};

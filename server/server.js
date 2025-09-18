@@ -38,7 +38,7 @@ mongoose.connect(`mongodb+srv://monu:${process.env.MONGO_PASS}@cluster0.bgnsdfg.
   console.log('Database connected successfully');
 }).catch((err) => {
   console.log(err);
-})
+});
 app.use('/api/auth', Authrouter);
 app.use('/api/admin/products', adminProductsRouter);
 app.use('/api/shop/products', shopProductsRouter);
